@@ -45,7 +45,6 @@ while True:
         _max = int(input("Введите глубину графа: "))
     except ValueError:
         print("Некорректный ввод!")
-        continue
     else:
         break
 

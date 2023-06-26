@@ -7,7 +7,6 @@ while True:
         _max = int(input("Введите число элементов: "))
     except ValueError:
         print("Некорректный ввод!")
-        continue
     else:
         break
 

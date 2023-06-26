@@ -8,7 +8,6 @@ while True:
         _max = int(input('Максимальное число: '))
     except ValueError:
         print("Invalid input, please try again!")
-        continue
     else:
         break
 
