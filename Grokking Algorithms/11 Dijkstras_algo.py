@@ -21,6 +21,7 @@ def dijkstra_algo(graph, start):
 def find_path(start, end, par):
     path = []
     curr = end
+    path.append(end)
     while True:
         path.append(par[curr])
         curr = par[curr]
