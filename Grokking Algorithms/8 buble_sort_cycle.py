@@ -10,14 +10,14 @@ while True:
     else:
         break
 
-array = [choice(range(_max * (-1), _max)) for _ in range(_max)]
+arr = [choice(range(_max * (-1), _max)) for _ in range(_max)]
 
-print(array)
+print(arr)
 
-def bubble_sort(array: list) -> list:
-    # Если закомментировать эту строку - получится аналог .sort(),
-    # если оставить - аналог sorted()
-    #array = array.copy()
+
+def bubble_sort(array: list, save_original: bool = True) -> list:
+    if save_original:
+        array = array.copy()
 
     _l = len(array) - 1
 
@@ -29,6 +29,6 @@ def bubble_sort(array: list) -> list:
     return array
 
 
-bubble_sort(array)
+sorted_list = bubble_sort(arr, True)
 
-print(array, sep='\n')
+print(arr, sorted_list, sep='\n')
