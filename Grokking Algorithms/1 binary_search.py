@@ -25,12 +25,10 @@ def binary_search(max_num: int) -> tuple[int | None, int]:
         if mid == guess_num:
             return guess_num, tries
         if mid > guess_num:
-
             r = mid - 1
-            tries += 1
         else:
             l = mid + 1
-            tries += 1
+        tries += 1
 
     return None, tries
 

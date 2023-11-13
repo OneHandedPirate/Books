@@ -1,6 +1,6 @@
 #O(n**2)
-
-from random import choice
+from time import time
+from random import choice, randint
 
 while True:
     try:
@@ -21,7 +21,7 @@ def bubble_sort(array: list, save_original: bool = True) -> list:
 
     _l = len(array) - 1
 
-    while _l >= 2:
+    while _l:
         for i in range(_l):
             if array[i] > array[i+1]:
                 array[i], array[i+1] = array[i+1], array[i]
@@ -32,3 +32,30 @@ def bubble_sort(array: list, save_original: bool = True) -> list:
 sorted_list = bubble_sort(arr, True)
 
 print(arr, sorted_list, sep='\n')
+
+start_bubble = time()
+
+m = 0
+
+
+def bubble_sort(array: list, in_place: bool = True) -> list:
+    temp = array if in_place else array.copy()
+
+    length = len(temp) - 1
+    while length:
+        for i in range(length):
+            if temp[i] > temp[i + 1]:
+                temp[i], temp[i + 1] = temp[i+1], temp[i]
+            global m
+            m += 1
+        length -= 1
+    return None if in_place else temp
+
+
+new_list = [randint(-100, 100) for _ in '1' * 1000]
+print(new_list)
+bubble_sort(new_list)
+
+print(f'Время на пузырьковую сортировку: {time() - start_bubble:.2f}. Операций: {m}', sep='\n')
+
+print(new_list)

@@ -19,8 +19,9 @@ def quick_sort(array: list) -> list:
     else:
         pivot_indx = len(array)//2
         pivot = array[pivot_indx]
-        less = [i for i in (array[:pivot_indx] + array[pivot_indx+1:]) if pivot >= i]
-        greater = [i for i in (array[:pivot_indx] + array[pivot_indx+1:]) if pivot < i]
+        array_wo_pivot = array[:pivot_indx] + array[pivot_indx+1:]
+        less = [i for i in array_wo_pivot if pivot >= i]
+        greater = [i for i in array_wo_pivot if pivot < i]
 
         return quick_sort(less) + [pivot] + quick_sort(greater)
 
