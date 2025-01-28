@@ -4,7 +4,7 @@ from utils import delay
 
 
 def call_later():
-    print('I will be called later')
+    print("I will be called later")
 
 
 async def main():

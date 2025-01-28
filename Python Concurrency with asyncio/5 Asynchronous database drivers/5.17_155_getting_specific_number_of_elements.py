@@ -16,12 +16,12 @@ async def take(generator, to_take: int):
 async def main():
     connection = await asyncpg.connect(**config)
     async with connection.transaction():
-        query = 'SELECT product_id, product_name from product'
+        query = "SELECT product_id, product_name from product"
         product_generator = connection.cursor(query)
         async for product in take(product_generator, 5):
             print(product)
 
-        print('Got the first five products!')
+        print("Got the first five products!")
 
     await connection.close()
 

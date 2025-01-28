@@ -2,7 +2,7 @@ import multiprocessing
 import time
 
 
-threads = int(input('How many threads does your processor have?\n'))
+threads = int(input("How many threads does your processor have?\n"))
 
 
 def print_fib(number: int) -> None:
@@ -14,11 +14,14 @@ def print_fib(number: int) -> None:
         else:
             return fib(n - 1) + fib(n - 2)
 
-    print(f'fib({number}) equals {fib(number)}')
+    print(f"fib({number}) equals {fib(number)}")
 
 
 def fib_with_processes():
-    processes = [multiprocessing.Process(target=print_fib, args=(40,)) for _ in range(threads-1)]
+    processes = [
+        multiprocessing.Process(target=print_fib, args=(40,))
+        for _ in range(threads - 1)
+    ]
 
     for process in processes:
         process.start()
@@ -34,4 +37,4 @@ fib_with_processes()
 end = time.time()
 
 
-print(f'Running time with multithreading is {end - start:.4f} sec.')
+print(f"Running time with multithreading is {end - start:.4f} sec.")

@@ -6,7 +6,7 @@ from utils import async_timed
 
 @async_timed()
 async def get_example_status() -> int:
-    return requests.get('http://example.com').status_code
+    return requests.get("http://example.com").status_code
 
 
 @async_timed()
@@ -18,6 +18,7 @@ async def main():
     await task1
     await task2
     await task3
+
 
 # All tasks will run consecutively (not concurrently)
 asyncio.run(main())

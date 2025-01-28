@@ -5,7 +5,7 @@ from random import randint
 
 while True:
     try:
-        _max = int(input('Максимальное число: '))
+        _max = int(input("Максимальное число: "))
     except ValueError:
         print("Invalid input, please try again!")
     else:
@@ -13,8 +13,7 @@ while True:
 
 
 def binary_search(max_num: int) -> tuple[int | None, int]:
-
-    guess_num = randint(0, max_num*2)
+    guess_num = randint(0, max_num * 2)
     tries = 0
 
     l, r = 0, max_num

@@ -9,7 +9,7 @@ async def main():
         result = await asyncio.wait_for(asyncio.shield(task), 5)
         print(result)
     except asyncio.exceptions.TimeoutError:
-        print('Task is running for over 5 seconds')
+        print("Task is running for over 5 seconds")
         result = await task
         print(result)
 

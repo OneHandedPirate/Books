@@ -9,7 +9,7 @@ async def main():
         print(result)
     except asyncio.exceptions.TimeoutError:
         print("Timeout")
-        print(f'Is task cancelled? {delay_task.cancelled()}')
+        print(f"Is task cancelled? {delay_task.cancelled()}")
 
-        
+
 asyncio.run(main())

@@ -8,6 +8,7 @@ async def main():
     tasks = [asyncio.create_task(delay(seconds)) for seconds in delay_time]
     [await task for task in tasks]
 
+
 asyncio.run(main())
 
 # Took ~ 3 seconds

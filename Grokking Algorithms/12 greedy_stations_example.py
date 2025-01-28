@@ -1,11 +1,11 @@
-#O(n**2)
-states_needed = {'mt', 'wa', 'or', 'id', 'nv', 'ut', 'ca', 'az'}
+# O(n**2)
+states_needed = {"mt", "wa", "or", "id", "nv", "ut", "ca", "az"}
 stations = {
-    'kone': {'id', 'nv', 'ut'},
-    'ktwo': {'wa', 'id', 'mt'},
-    'kthree': {'or', 'nv', 'ca'},
-    'kfour': {'nv', 'ut'},
-    'kfive': {'ca', 'az'}
+    "kone": {"id", "nv", "ut"},
+    "ktwo": {"wa", "id", "mt"},
+    "kthree": {"or", "nv", "ca"},
+    "kfour": {"nv", "ut"},
+    "kfive": {"ca", "az"},
 }
 
 final_stations = set()
@@ -27,4 +27,4 @@ while states_needed:
     stations.pop(best_station)
 
 
-print(final_stations, count, sep='\n')
+print(final_stations, count, sep="\n")

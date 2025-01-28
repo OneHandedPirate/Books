@@ -4,7 +4,7 @@ import requests
 
 
 def read_example() -> None:
-    res = requests.get('http://example.com')
+    res = requests.get("http://example.com")
     print(res.status_code)
 
 
@@ -16,7 +16,7 @@ start_time = time.time()
 thread_1.start()
 thread_2.start()
 
-print('All threads are running!')
+print("All threads are running!")
 
 thread_1.join()
 thread_2.join()
@@ -24,4 +24,4 @@ thread_2.join()
 end_time = time.time()
 
 # Approximately 2 times faster than sync version
-print(f'Multithreading running took {end_time-start_time:.4f} seconds')
+print(f"Multithreading running took {end_time - start_time:.4f} seconds")

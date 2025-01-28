@@ -11,7 +11,7 @@ def print_fib(number: int) -> None:
         else:
             return fib(n - 1) + fib(n - 2)
 
-    print(f'fib({number}) equals {fib(number)}')
+    print(f"fib({number}) equals {fib(number)}")
 
 
 def fibs_with_threads():
@@ -32,4 +32,4 @@ fibs_with_threads()
 end = time.time()
 
 # No advantage over sync fib_generator (even more time to compute)
-print(f'Running time with multithreading is {end - start:.4f} sec.')
+print(f"Running time with multithreading is {end - start:.4f} sec.")

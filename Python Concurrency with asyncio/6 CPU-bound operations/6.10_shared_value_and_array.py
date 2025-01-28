@@ -10,13 +10,13 @@ def increment_array(shared_array: Array) -> None:
         shared_array[num] += 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     integer = Value("i", 0)
     integer_array = Array("i", [0, 0])
 
     procs = [
         Process(target=increment_value, args=(integer,)),
-        Process(target=increment_array, args=(integer_array,))
+        Process(target=increment_array, args=(integer_array,)),
     ]
 
     [p.start() for p in procs]

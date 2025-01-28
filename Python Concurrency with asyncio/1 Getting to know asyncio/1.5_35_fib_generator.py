@@ -10,7 +10,7 @@ def print_fib(number: int) -> None:
         else:
             return fib(n - 1) + fib(n - 2)
 
-    print(f'fib({number}) equals {fib(number)}')
+    print(f"fib({number}) equals {fib(number)}")
 
 
 def fib_no_threading():
@@ -24,4 +24,4 @@ fib_no_threading()
 
 end = time.time()
 
-print(f'Running time: {end - start:.4f} sec.')
+print(f"Running time: {end - start:.4f} sec.")

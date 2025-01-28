@@ -4,15 +4,17 @@ from aiohttp import ClientSession
 
 
 async def fetch_status(session: ClientSession, url: str) -> int:
-    ten_millis = aiohttp.ClientTimeout(total=.01)  # overrides connection timeout
+    ten_millis = aiohttp.ClientTimeout(total=0.01)  # overrides connection timeout
     async with session.get(url, timeout=ten_millis) as result:
         return result.status
 
 
 async def main():
-    session_timeout = aiohttp.ClientTimeout(total=1, connect=.1)  # set session timeout as 1 second and connection timeout as 0.1 second
+    session_timeout = aiohttp.ClientTimeout(
+        total=1, connect=0.1
+    )  # set session timeout as 1 second and connection timeout as 0.1 second
     async with aiohttp.ClientSession(timeout=session_timeout) as session:
-        await fetch_status(session, 'https://example.com')
+        await fetch_status(session, "https://example.com")
 
 
 asyncio.run(main())

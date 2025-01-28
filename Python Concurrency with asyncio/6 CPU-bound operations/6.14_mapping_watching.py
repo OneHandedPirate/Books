@@ -24,7 +24,7 @@ def map_frequencies(chunk: list[str]) -> dict[str, int]:
 
 def partition(data: list, chunk_size: int) -> list:
     for i in range(0, len(data), chunk_size):
-        yield data[i:i + chunk_size]
+        yield data[i : i + chunk_size]
 
 
 def merge_dicts(first: dict[str, int], second: dict[str, int]) -> dict[str, int]:
@@ -47,7 +47,7 @@ async def main(partition_size: int):
         content = f.readlines()
         loop = asyncio.get_running_loop()
         tasks = []
-        map_progress = Value('i', 0)
+        map_progress = Value("i", 0)
 
         with ProcessPoolExecutor(initializer=init, initargs=(map_progress,)) as pool:
             total_partitions = len(content) // partition_size
@@ -55,7 +55,9 @@ async def main(partition_size: int):
 
             for chunk in partition(content, partition_size):
                 tasks.append(
-                    loop.run_in_executor(pool,functools.partial(map_frequencies, chunk))
+                    loop.run_in_executor(
+                        pool, functools.partial(map_frequencies, chunk)
+                    )
                 )
 
             counters = await asyncio.gather(*tasks)
@@ -64,7 +66,7 @@ async def main(partition_size: int):
 
             final_results = functools.reduce(merge_dicts, counters)
 
-            print(f'Aardvark count: {final_results["Aardvark"]}')
+            print(f"Aardvark count: {final_results['Aardvark']}")
 
 
 if __name__ == "__main__":

@@ -13,11 +13,11 @@ async def main():
             await connection.execute(insert_brand)
             await connection.execute(insert_brand)
     except Exception:
-        logging.exception('Error occurred while inserting brand')
+        logging.exception("Error occurred while inserting brand")
     finally:
         query = """SELECT brand_name FROM brand WHERE brand_name LIKE 'big_%'"""
         brands = await connection.fetch(query)
-        print(f'Query result: {brands}')
+        print(f"Query result: {brands}")
         await connection.close()
 
 

@@ -17,9 +17,9 @@ def quick_sort(array: list) -> list:
     if len(array) < 2:
         return array
     else:
-        pivot_indx = len(array)//2
+        pivot_indx = len(array) // 2
         pivot = array[pivot_indx]
-        array_wo_pivot = array[:pivot_indx] + array[pivot_indx+1:]
+        array_wo_pivot = array[:pivot_indx] + array[pivot_indx + 1 :]
         less = [i for i in array_wo_pivot if pivot >= i]
         greater = [i for i in array_wo_pivot if pivot < i]
 
@@ -28,5 +28,4 @@ def quick_sort(array: list) -> list:
 
 sorted_array = quick_sort(array)
 
-print(array, sorted_array, len(sorted_array), sep='\n')
-
+print(array, sorted_array, len(sorted_array), sep="\n")

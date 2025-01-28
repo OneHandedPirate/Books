@@ -10,12 +10,12 @@ def graph_filling(g: dict, node_list: list, depth: int) -> None:
         return
 
     for name in node_list:
-        g[name] = [''.join(choices(letters, k=8)) for _ in range(randint(2, 6))]
+        g[name] = ["".join(choices(letters, k=8)) for _ in range(randint(2, 6))]
         graph_filling(g, g[name], depth - 1)
 
 
 def is_seller(s: str) -> bool:
-    return s.endswith('dima')
+    return s.endswith("dima")
 
 
 def search(graph: dict, name: str) -> bool:
@@ -28,17 +28,17 @@ def search(graph: dict, name: str) -> bool:
         person = search_queue.popleft()
         if person not in checked:
             if is_seller(person):
-                print("Found one!", person, f'Checks: {n}', sep='\n')
+                print("Found one!", person, f"Checks: {n}", sep="\n")
                 return True
             else:
                 if graph.get(person):
                     search_queue += graph[person]
                     checked.append(person)
-    print("Not found :(", f'Checks: {n}', sep='\n')
+    print("Not found :(", f"Checks: {n}", sep="\n")
     return False
 
 
-graph = {'me': [''.join(choices(letters, k=8)) for i in range(randint(2, 6))]}
+graph = {"me": ["".join(choices(letters, k=8)) for i in range(randint(2, 6))]}
 
 while True:
     try:
@@ -49,8 +49,8 @@ while True:
         break
 
 
-graph_filling(graph, graph['me'], _max)
+graph_filling(graph, graph["me"], _max)
 # pprint(graph)
 print("Graph is filled!\n")
 
-search(graph, 'me')
+search(graph, "me")

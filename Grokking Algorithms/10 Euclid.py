@@ -1,7 +1,7 @@
 while True:
     try:
-        a = int(input('Введите первое число: '))
-        b = int(input('Введите второе число: '))
+        a = int(input("Введите первое число: "))
+        b = int(input("Введите второе число: "))
     except ValueError:
         print("Некорректный ввод")
     else:

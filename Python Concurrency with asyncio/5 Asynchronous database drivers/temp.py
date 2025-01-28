@@ -1,10 +1,9 @@
 def load_common_words() -> list[str]:
-    with open('common_words.txt') as common_words:
-        return [word.strip('\n') for word in common_words.readlines()]
+    with open("common_words.txt") as common_words:
+        return [word.strip("\n") for word in common_words.readlines()]
 
 
-product_query = \
-"""
+product_query = """
 SELECT
 p.product_id,
 p.product_name,

@@ -28,5 +28,6 @@ async def main():
         for res in results:
             print(res)
 
+
 if __name__ == "__main__":
     asyncio.run(main())

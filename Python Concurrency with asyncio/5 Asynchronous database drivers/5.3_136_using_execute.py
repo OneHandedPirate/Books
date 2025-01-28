@@ -5,11 +5,11 @@ from db_tables import *
 
 async def main():
     config = {
-        'host': 'localhost',
-        'port': 5432,
-        'user': 'postgres',
-        'database': 'products',
-        'password': 'password'
+        "host": "localhost",
+        "port": 5432,
+        "user": "postgres",
+        "database": "products",
+        "password": "password",
     }
 
     connection = await asyncpg.connect(**config)
@@ -20,15 +20,16 @@ async def main():
         CREATE_PRODUCT_SIZE_TABLE,
         CREATE_SKU_TABLE,
         SIZE_INSERT,
-        COLOR_INSERT
+        COLOR_INSERT,
     ]
 
-    print('Creating products database...')
+    print("Creating products database...")
     for statement in statements:
         status = await connection.execute(statement)
         print(status)
 
-    print('Products database created!')
+    print("Products database created!")
     await connection.close()
+
 
 asyncio.run(main())

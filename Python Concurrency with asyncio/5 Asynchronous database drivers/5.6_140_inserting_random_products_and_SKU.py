@@ -5,10 +5,12 @@ from temp import load_common_words
 from db_config import config
 
 
-def gen_products(common_words: list[str],
-                 brand_id_start: int,
-                 brand_id_end: int,
-                 products_to_create: int) -> list[tuple[str, int]]:
+def gen_products(
+    common_words: list[str],
+    brand_id_start: int,
+    brand_id_end: int,
+    products_to_create: int,
+) -> list[tuple[str, int]]:
     products = []
     for _ in range(products_to_create):
         description = [common_words[index] for index in sample(range(900), 10)]
@@ -17,9 +19,9 @@ def gen_products(common_words: list[str],
     return products
 
 
-def gen_skus(product_id_start: int,
-             product_id_end: int,
-             skus_to_create: int) -> list[tuple[int, int, int]]:
+def gen_skus(
+    product_id_start: int, product_id_end: int, skus_to_create: int
+) -> list[tuple[int, int, int]]:
     skus = []
     for _ in range(skus_to_create):
         product_id = randint(product_id_start, product_id_end)
@@ -33,18 +35,19 @@ async def main():
     common_words = load_common_words()
     connection = await asyncpg.connect(**config)
 
-    product_tuples = gen_products(common_words,
-                                  brand_id_start=1,
-                                  brand_id_end=100,
-                                  products_to_create=1000)
-    await connection.executemany("INSERT INTO product VALUES(DEFAULT, $1, $2)",
-                                 product_tuples)
+    product_tuples = gen_products(
+        common_words, brand_id_start=1, brand_id_end=100, products_to_create=1000
+    )
+    await connection.executemany(
+        "INSERT INTO product VALUES(DEFAULT, $1, $2)", product_tuples
+    )
 
-    sku_tuples = gen_skus(product_id_start=1,
-                          product_id_end=1000,
-                          skus_to_create=100000)
-    await connection.executemany("INSERT INTO sku VALUES(DEFAULT, $1, $2, $3)",
-                                 sku_tuples)
+    sku_tuples = gen_skus(
+        product_id_start=1, product_id_end=1000, skus_to_create=100000
+    )
+    await connection.executemany(
+        "INSERT INTO sku VALUES(DEFAULT, $1, $2, $3)", sku_tuples
+    )
 
     await connection.close()
 

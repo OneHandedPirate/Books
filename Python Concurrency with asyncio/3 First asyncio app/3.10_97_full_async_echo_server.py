@@ -5,13 +5,14 @@ import logging
 import signal
 
 
-async def echo(connection: socket,
-               loop: AbstractEventLoop) -> None:
+async def echo(connection: socket, loop: AbstractEventLoop) -> None:
     try:
-        while data := await loop.sock_recv(connection, 1024):  # waiting for data passed from client
-            print('Got data')
-            if data == b'boom\r\n':
-                raise Exception('Unexpected network error')
+        while data := await loop.sock_recv(
+            connection, 1024
+        ):  # waiting for data passed from client
+            print("Got data")
+            if data == b"boom\r\n":
+                raise Exception("Unexpected network error")
             await loop.sock_sendall(connection, data)  # send data back to client
     except Exception as e:
         logging.exception(e)
@@ -22,12 +23,11 @@ async def echo(connection: socket,
 echo_tasks = []
 
 
-async def connection_listener(server_socket: socket,
-                              loop: AbstractEventLoop):
+async def connection_listener(server_socket: socket, loop: AbstractEventLoop):
     while True:
         connection, address = await loop.sock_accept(server_socket)
         connection.setblocking(False)
-        print(f'Connection request from {address} received')
+        print(f"Connection request from {address} received")
         echo_task = asyncio.create_task(echo(connection, loop))
         echo_tasks.append(echo_task)
 
@@ -53,12 +53,12 @@ async def main():
     server_socket = socket.socket()
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-    server_address = ('127.0.0.1', 8000)
+    server_address = ("127.0.0.1", 8000)
     server_socket.setblocking(False)
     server_socket.bind(server_address)
     server_socket.listen()
 
-    for signame in {'SIGINT', 'SIGTERM'}:
+    for signame in {"SIGINT", "SIGTERM"}:
         loop.add_signal_handler(getattr(signal, signame), shutdown)
 
     await connection_listener(server_socket, loop)

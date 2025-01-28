@@ -19,7 +19,7 @@ lines = [
     "I know what I know",
     "I know that I know",
     "I don't know much",
-    "They don't know much"
+    "They don't know much",
 ]
 
 mapped_result = [map_frequency(line) for line in lines]

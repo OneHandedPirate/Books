@@ -5,27 +5,28 @@ from typing import Optional, Type
 
 
 class ConnectedSocket:
-
     def __init__(self, server_socket):
         self._connection = None
         self._server_socket = server_socket
 
     async def __aenter__(self):
-        print('Entering context manager, awaiting connection')
+        print("Entering context manager, awaiting connection")
         loop = asyncio.get_event_loop()
         connection, address = await loop.sock_accept(self._server_socket)
         self._connection = connection
-        print('Connection established')
+        print("Connection established")
 
         return self._connection
 
-    async def __aexit__(self,
-                        exc_type: Optional[Type[BaseException]],
-                        exc_val: Optional[Type[BaseException]],
-                        exc_tb: Optional[Type[BaseException]]):
-        print('Exit context manager')
+    async def __aexit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[Type[BaseException]],
+        exc_tb: Optional[Type[BaseException]],
+    ):
+        print("Exit context manager")
         self._connection.close()
-        print('Connection closed')
+        print("Connection closed")
 
 
 async def main():
@@ -33,7 +34,7 @@ async def main():
 
     server_socket = socket.socket()
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server_address = ('127.0.0.1', 8000)
+    server_address = ("127.0.0.1", 8000)
     server_socket.setblocking(False)
     server_socket.bind(server_address)
     server_socket.listen()

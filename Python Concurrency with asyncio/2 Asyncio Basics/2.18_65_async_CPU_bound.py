@@ -21,5 +21,6 @@ async def main():
     await task_two
     await delay_task
 
+
 # All tasks will run consecutively since cpu-bound tasks will occupy GIL till the end.
 asyncio.run(main())

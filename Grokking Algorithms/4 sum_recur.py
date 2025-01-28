@@ -19,4 +19,4 @@ def custom_elems(array: list) -> int:
     return 0 if len(array) == 0 else 1 + custom_elems(array[1:])
 
 
-print(array, custom_sum(array), custom_elems(array), sep='\n')
+print(array, custom_sum(array), custom_elems(array), sep="\n")

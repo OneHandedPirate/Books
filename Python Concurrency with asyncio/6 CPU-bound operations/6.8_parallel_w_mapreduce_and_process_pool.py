@@ -6,7 +6,7 @@ import time
 
 def partition(data: list, chunk_size: int) -> list:
     for i in range(0, len(data), chunk_size):
-        yield data[i:i + chunk_size]
+        yield data[i : i + chunk_size]
 
 
 def map_frequencies(chunk: list[str]) -> dict[str, int]:
@@ -35,8 +35,7 @@ async def main(partition_size: int):
             for chunk in partition(content, partition_size):
                 tasks.append(
                     loop.run_in_executor(
-                        pool,
-                        functools.partial(map_frequencies, chunk)
+                        pool, functools.partial(map_frequencies, chunk)
                     )
                 )
             intermediate_results = await asyncio.gather(*tasks)
@@ -44,8 +43,8 @@ async def main(partition_size: int):
 
             print(f"Aardvark count is: {final_result['Aardvark']}")
 
-            print(f'Time elapsed: {time.time() - start:.4f}')
+            print(f"Time elapsed: {time.time() - start:.4f}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main(70_000))

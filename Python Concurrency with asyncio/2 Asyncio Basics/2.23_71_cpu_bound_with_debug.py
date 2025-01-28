@@ -14,7 +14,7 @@ async def cpu_bound_work() -> int:
 
 async def main():
     task_one = asyncio.create_task(cpu_bound_work())
-    
+
     await task_one
 
 

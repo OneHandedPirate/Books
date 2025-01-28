@@ -17,11 +17,11 @@ def increment():
 
 
 async def main():
-    counter = Value('d', 0)
+    counter = Value("d", 0)
     with ProcessPoolExecutor(initializer=init, initargs=(counter,)) as pool:
         await asyncio.get_running_loop().run_in_executor(pool, increment)
         print(counter.value)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())

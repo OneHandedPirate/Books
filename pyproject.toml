@@ -9,3 +9,12 @@ dependencies = [
     "asyncpg>=0.30.0",
     "requests>=2.32.3",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.3",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"

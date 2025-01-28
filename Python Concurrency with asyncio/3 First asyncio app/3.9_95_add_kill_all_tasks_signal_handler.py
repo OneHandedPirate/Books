@@ -6,10 +6,10 @@ from utils import delay
 
 
 def cancel_tasks():
-    print('SIGINT signal received!')
+    print("SIGINT signal received!")
     tasks: set[asyncio.Task] = asyncio.all_tasks()
 
-    print(f'Remove {len(tasks)} task(s)')
+    print(f"Remove {len(tasks)} task(s)")
     [task.cancel() for task in tasks]
 
 

@@ -3,7 +3,7 @@ import asyncio
 
 async def hello_world_of_morpheus() -> str:
     await asyncio.sleep(1)
-    return 'Hello, world!'
+    return "Hello, world!"
 
 
 async def main() -> None:
@@ -12,4 +12,3 @@ async def main() -> None:
 
 
 asyncio.run(main())
-

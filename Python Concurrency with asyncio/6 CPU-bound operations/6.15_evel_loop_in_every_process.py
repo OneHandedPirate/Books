@@ -6,17 +6,16 @@ from utils import async_timed
 
 
 config = {
-    'host': 'localhost',
-    'port': 5432,
-    'user': 'postgres',
-    'database': 'products',
-    'password': 'password',
-    'min_size': 6,
-    'max_size': 6
+    "host": "localhost",
+    "port": 5432,
+    "user": "postgres",
+    "database": "products",
+    "password": "password",
+    "min_size": 6,
+    "max_size": 6,
 }
 
-product_query = \
-"""
+product_query = """
 SELECT
 p.product_id,
 p.product_name,
@@ -46,6 +45,7 @@ def run_in_new_event_loop(num_queries: int) -> list[dict]:
     async def run_queries():
         async with asyncpg.create_pool(**config) as pool:
             return await query_products_concurrently(pool, num_queries)
+
     results = [dict(result) for result in asyncio.run(run_queries())]
     return results
 
@@ -54,12 +54,14 @@ def run_in_new_event_loop(num_queries: int) -> list[dict]:
 async def main():
     loop = asyncio.get_running_loop()
     pool = ProcessPoolExecutor()
-    tasks = [loop.run_in_executor(pool, run_in_new_event_loop, 10_000) for _ in range(5)]
+    tasks = [
+        loop.run_in_executor(pool, run_in_new_event_loop, 10_000) for _ in range(5)
+    ]
     all_results = await asyncio.gather(*tasks)
     total_queries = sum([len(result) for result in all_results])
 
-    print(f'Products extracted from DB: {total_queries}')
+    print(f"Products extracted from DB: {total_queries}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())

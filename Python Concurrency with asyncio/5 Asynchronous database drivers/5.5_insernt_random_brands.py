@@ -5,8 +5,8 @@ from db_config import config
 
 
 def load_common_words() -> list[str]:
-    with open('common_words.txt') as common_words:
-        return [word.strip('\n') for word in common_words.readlines()]
+    with open("common_words.txt") as common_words:
+        return [word.strip("\n") for word in common_words.readlines()]
 
 
 def generate_brand_names(words: list[str]) -> list[tuple[str,]]:
