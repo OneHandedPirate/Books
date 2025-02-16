@@ -7,6 +7,7 @@ requires-python = ">=3.12"
 dependencies = [
     "aiohttp>=3.11.11",
     "asyncpg>=0.30.0",
+    "pytest>=8.3.4",
     "requests>=2.32.3",
 ]
 
